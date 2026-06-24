@@ -28,11 +28,10 @@
 
 | Edge Case | Prompt Used | AI-Suggested Test | Did It Pass? | Your Reasoning |
 |-----------|-------------|-------------------|--------------|----------------|
-| | | | | |
-| | | | | |
-| | | | | |
-
----
+| Negative number | "Suggest edge-case inputs that might break parse_guess and write pytest cases" | `parse_guess("-5")` returns `(True, -5, None)` | Yes | The input box accepts any text, so negatives shouldn't crash parsing |
+| Decimal input | (same prompt) | `parse_guess("42.9")` returns `(True, 42, None)` | Yes | Decimals should truncate to an int, not throw an error |
+| Very large number | (same prompt) | `parse_guess("999999999999")` returns `(True, ..., None)` | Yes | Python ints don't overflow, so large values should parse fine |
+| Empty string | (same prompt) | `parse_guess("")` returns `(False, None, error)` | Yes | Empty input should be rejected with a clear message, not crash |
 
 ## Linting & Style (SF9)
 
