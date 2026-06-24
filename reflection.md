@@ -22,13 +22,13 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 I used Claude to help diagnose and fix the bugs.
 
-Correct suggestion: Claude spotted that `check_guess` had inverted hints — a too-high guess told the player to "Go HIGHER." It suggested swapping them. I verified in the live app (80 vs secret 50 now says "Go LOWER") and with a pytest case checking the hint contains "LOWER."
+**Correct suggestion:** Claude spotted that `check_guess` had inverted hints — a too-high guess told the player to "Go HIGHER." It suggested swapping them. I verified in the live app (80 vs secret 50 now says "Go LOWER") and with a pytest case checking the hint contains "LOWER."
 
-Incorrect/misleading suggestion: The starter tests expected `check_guess` to return a string, but it returns a tuple `(outcome, message)`. Trusting them would have meant breaking the function. I caught it and fixed the tests to read `result[0]`, then confirmed all tests pass.
+**Incorrect/misleading suggestion:** The starter tests expected `check_guess` to return a string, but it returns a tuple `(outcome, message)`. Trusting them would have meant breaking the function. I caught it and fixed the tests to read `result[0]`, then confirmed all tests pass.
 
 ## 3. Debugging and testing your fixes
 
-I verified each fix two ways: by playing the live app (with the Developer Debug Info expander open to see the secret) and by running pytest. After fixing the hint logic, guessing too high now correctly says "Go LOWER." After removing the string cast, a correct guess wins on any attempt. I wrote/corrected four pytest cases in tests/test_game_logic.py covering win, too-high, too-low, and a check that the too-high hint contains "LOWER" — all four pass (see test_results.txt).
+I verified each fix two ways: by playing the live app (with the Developer Debug Info expander open to see the secret) and by running pytest. After fixing the hint logic, guessing too high now correctly says "Go LOWER." After removing the string cast, a correct guess wins on any attempt. I wrote and corrected four pytest cases in tests/test_game_logic.py covering win, too-high, too-low, and a check that the too-high hint contains "LOWER" — all four pass (see test_results.txt).
 
 ## 4. What did you learn about Streamlit and state?
 
