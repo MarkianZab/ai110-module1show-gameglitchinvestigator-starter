@@ -44,3 +44,15 @@ It wrote the code, ran away, and now the game is unplayable.
 **Screenshot** *(optional)*: ![winning game screenshot](image-1.png)
 
 ## 🧪 Test Results
+
+```
+============================= test session starts ==============================
+platform darwin -- Python 3.12.5, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/markianzab/ai110-module1show-gameglitchinvestigator-starter
+plugins: anyio-4.13.0
+collected 4 items
+
+tests/test_game_logic.py ....                                            [100%]
+
+============================== 4 passed in 0.00s ===============================
+```
