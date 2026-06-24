@@ -1,16 +1,25 @@
 from logic_utils import check_guess
 
+
 def test_winning_guess():
-    # If the secret is 50 and guess is 50, it should be a win
+    # Secret 50, guess 50 -> win
     result = check_guess(50, 50)
-    assert result == "Win"
+    assert result[0] == "Win"
+
 
 def test_guess_too_high():
-    # If secret is 50 and guess is 60, hint should be "Too High"
+    # Secret 50, guess 60 -> outcome "Too High"
     result = check_guess(60, 50)
-    assert result == "Too High"
+    assert result[0] == "Too High"
+
 
 def test_guess_too_low():
-    # If secret is 50 and guess is 40, hint should be "Too Low"
+    # Secret 50, guess 40 -> outcome "Too Low"
     result = check_guess(40, 50)
-    assert result == "Too Low"
+    assert result[0] == "Too Low"
+
+
+def test_too_high_hint_says_go_lower():
+    # New test: targets the inverted-hint bug I fixed
+    result = check_guess(60, 50)
+    assert "LOWER" in result[1]
