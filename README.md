@@ -25,29 +25,47 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+## 📝 Document Your Experience
+
+1. The game is a number-guessing game built with Streamlit: the player guesses
+  a hidden number and gets "higher/lower" hints until they win or run out of attempts.
+2. Bugs found: (1) inverted hint messages — "Too High" told the player to go
+  higher; (2) the secret was cast to a string on even attempts, making wins
+  impossible and triggering TypeErrors; (3) scoring added points for some wrong
+  guesses, and the attempt counter started at 1 instead of 0.
+3. Fixes applied: corrected the hint messages, removed the string cast so the
+  secret stays an int, made wrong guesses consistently subtract 5, reset the
+  attempt counter to 0, and refactored all logic into logic_utils.py with
+  passing pytest tests.
 
 ## 📸 Demo Walkthrough
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+## 📸 Demo Walkthrough
 
-**Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
+1. User selects "Normal" difficulty (range 1–100, 8 attempts).
+2. User enters a guess of 80 → game returns "Too High -->Go LOWER!"
+3. User enters a guess of 40 → game returns "Too Low  --> Go HIGHER!"
+4. Score decreases by 5 for each incorrect guess.
+5. User enters the secret number --> win, balloons, and final score shown.
+6. "New Game" resets the board and starts a fresh round.
+
+**Screenshot** *(optional)*: ![alt text](image-1.png)
 
 ## 🧪 Test Results
 
-```
-# Paste your pytest output here, e.g.:
-# pytest tests/
-# ========================= X passed in 0.XXs =========================
-```
+============================= test session starts ==============================
+platform darwin -- Python 3.12.5, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/markianzab/ai110-module1show-gameglitchinvestigator-starter
+plugins: anyio-4.13.0
+collected 4 items                                                              
+
+tests/test_game_logic.py ....                                            [100%]
+
+============================== 4 passed in 0.00s ===============================
+markianzab@Markians-Air ai110-module1show-gameglitchinvestigator-starter % python3 -m pytest > test_results.txt
+markianzab@Markians-Air ai110-module1show-gameglitchinvestigator-starter % 
 
 ## 🚀 Stretch Features
 
